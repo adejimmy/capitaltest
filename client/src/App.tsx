@@ -6,6 +6,7 @@ import {
 } from '@apollo/client';
 
 import './App.css';
+import './index.css';
 import CreateProduct from './Components/CreateProduct';
 import ListOfProducts from './Components/ListOfProducts';
 

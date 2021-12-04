@@ -19,10 +19,26 @@ function ListOfProducts() {
     //     console.log(data)
     // }
     return (
-        <div> {data && (data.getAllProduct.map((product: any)=>{
-            return <div>
-                {product.id} / {product.product_code} / {product.Name} / {product.Product_Description}
-                <button onClick={() => {deleteProduct({variables:{id: product.id}})}}>Delete</button>
+        <div className="p-6  bg-white rounded-xl shadow-md  items-center "> {data && (data.getAllProduct.map((product: any)=>{
+            return <div className="pt-10 ">
+                <table className="table-fixed ">
+
+                    <tbody>
+                        <tr>
+                            <td className="w-1/4">{product.Name}</td>
+                            <td className="w-1/4">{product.product_code}</td>
+                            <td className="w-1/4">{product.Product_Description}</td>
+                            <td className="w-1/4"><button 
+                            className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+                            onClick={() => {deleteProduct({variables:{id: product.id}})}}>Delete</button>
+                            <button 
+                            className="px-4 py-1 text-sm text-purple-600 font-semibold rounded-full border border-purple-200 hover:text-white hover:bg-purple-600 hover:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-offset-2"
+                            >Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                
             </div>
         }))} </div>
     )
