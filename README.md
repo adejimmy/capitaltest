@@ -25,3 +25,18 @@ localhost:3001/graphql
 
 localhost:3000 
 
+
+6) To access and change the database credentials 
+Access the src folder in the server folder 
+Open the index file in the main asych function you will find create connection, then you can change the connection credentials.
+
+
+await createConnection({
+        type: "mysql",
+        database: "ecome",
+        username: "root",
+        password: "",
+        logging: true,
+        synchronize: false,
+        entities: [Products],
+    })

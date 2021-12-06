@@ -35,22 +35,17 @@ export const UPDATE_PRODUCT = {
     async resolve(parent:any, args:any) {
         const {id, newProduct_code, newName, newProduct_Description, newCategory_code, newprice, newStatus} = args;
         const product = await Products.findOne({id:id});
-        if(!product) {
-            throw new Error("PRODUCT ID NOT FOUND");
-        }
-        const productId = product?.id;
-        let obj = {
-            product_code: newProduct_code, 
-            Name: newName, 
-            Product_Description: newProduct_Description, 
-            Category_code: newCategory_code, 
-            price: newprice, 
-            Status: newStatus,
-        };
-        if (productId){
+        
+        if (product){
             await Products.update(
-                {id:id}, 
-                {product_code: newProduct_code}
+                {id:args.id}, 
+                {
+                    product_code: newProduct_code, Name: newName, 
+                    Product_Description: newProduct_Description, 
+                    Category_code: newCategory_code, 
+                    price: newprice, 
+                    Status: newStatus
+                }
             );
             return {successful:true, message: "Succesfully updated"}
         } else {
